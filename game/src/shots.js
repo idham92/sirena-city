@@ -35,6 +35,32 @@ export function setupShot(game, name) {
     game.player.car = car;
     game.player.x = car.x;
     game.player.y = car.y;
+    // Company on the avenue: one car ahead in the same lane, one coming
+    // the other way, and two walkers on the near sidewalk.
+    const traffic = game.cars.filter((c) => c.driver === 'ai');
+    if (traffic[0]) {
+      traffic[0].x = car.x;
+      traffic[0].y = car.y - 300;
+      traffic[0].vx = 0;
+      traffic[0].vy = -150;
+      traffic[0].angle = -Math.PI / 2;
+      traffic[0].ai = { dx: 0, dy: -1, decided: false, cruise: 0.5 };
+    }
+    if (traffic[1]) {
+      traffic[1].x = roadCenterV(3) - 32;
+      traffic[1].y = car.y - 430;
+      traffic[1].vx = 0;
+      traffic[1].vy = 150;
+      traffic[1].angle = Math.PI / 2;
+      traffic[1].ai = { dx: 0, dy: 1, decided: false, cruise: 0.5 };
+    }
+    const walkers = game.peds.slice(0, 2);
+    walkers.forEach((ped, i) => {
+      ped.x = roadCenterV(3) + 92;
+      ped.y = car.y - 120 - i * 130;
+      ped.tx = ped.x;
+      ped.ty = ped.y - 200;
+    });
     snapCamera(game);
     return 'drive';
   }
@@ -49,6 +75,7 @@ export function setupShot(game, name) {
   }
 
   if (name === 'chase') {
+    game.missions.startNext();
     const gt = game.cars.find((c) => c.model === MODEL.CORAL && c.driver === 'none');
     gt.x = roadCenterV(2) + 190;
     gt.y = roadCenterH(3) + 32;
@@ -62,7 +89,7 @@ export function setupShot(game, name) {
     game.heat = 265; // three stars
     game.sightT = 0;
     for (let i = 0; i < 3; i++) {
-      const cop = makeCar(gt.x - 150 - i * 95, gt.y + (i - 1) * 44, 0, MODEL.POLICE, '#20303e');
+      const cop = makeCar(gt.x - 135 - i * 88, gt.y + (i - 1) * 38, 0, MODEL.POLICE, '#20303e');
       cop.driver = 'police';
       cop.ai = { dx: 1, dy: 0, stuckT: 0, reverseT: 0 };
       cop.vx = 285;

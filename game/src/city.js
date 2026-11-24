@@ -29,15 +29,15 @@ const BUILDING_COLORS = [
   '#f2d5a0', '#e8a87c', '#d98880', '#f0e1c6', '#c9d6a3',
   '#a8c5d6', '#e6b8c8', '#f5e6b8', '#deb887', '#b5c99a',
 ];
-const ROOF_COLORS = ['#8a5a44', '#6e4a3a', '#7d5a50', '#5d6e5a', '#946b54', '#4f5e6b'];
+const ROOF_COLORS = ['#8a5a44', '#4f6e6b', '#7d5a50', '#5d6e5a', '#946b54', '#4f5e6b', '#a08b62', '#6b4a5e'];
 const SIGN_COLORS = ['#ff5d8f', '#00e5ff', '#ffd166', '#8aff5a', '#ff8c42', '#c792ff'];
 
 const SHOP_NAMES = [
-  'CAFÉ BRISA', 'TALLER RUEDA', 'HOTEL FARO', 'MERCADO SOL', 'FARMACIA LUNA',
+  'HOTEL FARO', 'MERCADO SOL', 'FARMACIA LUNA',
   'BAR LA OLA', 'PELUQUERÍA REY', 'TIENDA NORTE', 'BANCO DEL PUERTO', 'CINE MAR',
   'GIMNASIO TORO', 'FLORISTERÍA AZAHAR', 'PANADERÍA TRIGO', 'LIBRERÍA MAREA',
   'TATUAJES EL ANCLA', 'JOYERÍA PERLA', 'BRASA Y HUMO', 'HELADERÍA COCO',
-  'DISCOS SUR', 'ÓPTICA CLARA', 'ALMACÉN DEL MUELLE', 'FERRETERÍA CLAVO',
+  'DISCOS SUR', 'ÓPTICA CLARA', 'FERRETERÍA CLAVO',
   'LAVANDERÍA AZUL', 'ZAPATERÍA PASO', 'DULCES CANELA', 'VIAJES ALISIO',
 ];
 

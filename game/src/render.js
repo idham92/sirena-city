@@ -295,6 +295,19 @@ export class Renderer {
           ctx.fillRect(x + 9 + cx * cw + 2, y + 9 + fy * ch + 2, Math.min(13, cw - 6), Math.min(9, ch - 6));
         }
       }
+      // Rooftop clutter: air-conditioning boxes and a water tank, placed
+      // by the same stable hash so they never jump between frames.
+      const units = 1 + Math.floor(Rng.hash3(b.id, 91, 7) * 3);
+      for (let u = 0; u < units; u++) {
+        const ux = x + 14 + Rng.hash3(b.id, u, 31) * Math.max(10, b.w - 60);
+        const uy = y + 12 + Rng.hash3(b.id, u, 57) * Math.max(10, b.h - 70);
+        ctx.fillStyle = 'rgba(0,0,0,0.20)';
+        ctx.fillRect(ux + 3, uy + 4, 22, 15);
+        ctx.fillStyle = '#b9bec4';
+        ctx.fillRect(ux, uy, 22, 15);
+        ctx.fillStyle = '#8f959c';
+        ctx.fillRect(ux + 3, uy + 3, 16, 4);
+      }
       // Storefront sign along the south face.
       ctx.fillStyle = b.sign;
       ctx.fillRect(x, y + b.h - 17, b.w, 17);
