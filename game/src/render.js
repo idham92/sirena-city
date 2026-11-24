@@ -556,7 +556,7 @@ export function createRenderer(canvas) {
       if (nearContact) prompt = 'E — Hablar con Marina';
       else if (nearCar) prompt = 'E — Subir al coche';
     } else prompt = 'E — Bajar del coche · Espacio — freno de mano';
-    if (prompt) text(prompt, W / 2, H - 20, 15, '#ffffff', 'center', 700);
+    if (prompt) text(prompt, W / 2, H - 46, 15, '#ffffff', 'center', 700);
 
     text('WASD conducir/andar · E entrar/salir · Ratón apuntar · Clic disparar · R recargar · P pausa · M sonido', W - 16, H - 20, 11.5, 'rgba(230,236,244,0.55)', 'right', 400);
 
