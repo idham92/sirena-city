@@ -76,6 +76,11 @@ export class AudioEngine {
     this.tone(150, 0.1, { type: 'square', vol: 0.18, slide: -90 });
   }
 
+  honk() {
+    this.tone(233, 0.13, { type: 'square', vol: 0.06 });
+    this.tone(233, 0.18, { type: 'square', vol: 0.06, delay: 0.17 });
+  }
+
   crash(strength = 1) {
     this.noise(0.28, { vol: 0.35 * strength, freq: 700 });
     this.tone(70, 0.22, { type: 'triangle', vol: 0.25 * strength, slide: -30 });
