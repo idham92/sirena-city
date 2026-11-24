@@ -346,6 +346,20 @@ export class Game {
     this.audio.updateMusic(dt, this.wanted / 5);
   }
 
+  // Title-screen life: traffic and pedestrians keep moving behind the
+  // menu, but no player, police or missions are involved.
+  updateAmbient(dt) {
+    this.time += dt;
+    for (const car of this.cars) {
+      if (car.driver === 'ai') updateTraffic(car, dt, this);
+    }
+    for (const ped of this.peds) updatePed(ped, dt, this);
+    this.updateFx(dt);
+    // A slow harbour pan for the menu backdrop.
+    this.camera.x = WORLD_W / 2 + Math.sin(this.time * 0.05) * 620;
+    this.camera.y = LAND_H - 420 + Math.cos(this.time * 0.037) * 160;
+  }
+
   updatePlayer(dt, input, view) {
     const p = this.player;
     if (p.car) {
