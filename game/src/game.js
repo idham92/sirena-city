@@ -358,7 +358,7 @@ export class Game {
       const impact = stepCar(car, dt, this.city, control);
       if (impact > 60) {
         this.audio.crash(Math.min(1, impact / 240));
-        car.hp -= impact * 0.14;
+        car.hp -= impact * 0.11;
         this.shake = Math.min(9, impact / 22);
         if (impact > 120) this.addHeat(14, car.x, car.y);
       }
